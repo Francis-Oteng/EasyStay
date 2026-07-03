@@ -1,96 +1,63 @@
-# Contributing to EasyStay
+# Contributor Covenant Code of Conduct
+# Our Pledge
+We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, caste, color, religion, or sexual identity and orientation.
 
-First off, thank you for considering contributing to our project! Your help is greatly appreciated.
+We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
 
-## How Can I Contribute?
+# Our Standards
+Examples of behavior that contributes to a positive environment for our community include:
 
-#### Reporting Bugs
-If you find a bug in the project, please submit an issue. When reporting a bug, please include:
-* A clear and descriptive title.
-* A detailed description of the problem, including steps to reproduce.
-* Any relevant logs, screenshots, or other information that could help diagnose the problem.
+Demonstrating empathy and kindness toward other people
+Being respectful of differing opinions, viewpoints, and experiences
+Giving and gracefully accepting constructive feedback
+Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
+Focusing on what is best not just for us as individuals, but for the overall community
+Examples of unacceptable behavior include:
 
-#### Suggesting Enhancements
-We welcome suggestions for improvements and new features. When suggesting an enhancement, please include:
-* A clear and descriptive title.
-* A detailed description of the proposed change.
-* Any relevant context or reasoning for the enhancement.
+The use of sexualized language or imagery, and sexual attention or advances of any kind
+Trolling, insulting or derogatory comments, and personal or political attacks
+Public or private harassment
+Publishing others’ private information, such as a physical or email address, without their explicit permission
+Other conduct which could reasonably be considered inappropriate in a professional setting
+Enforcement Responsibilities
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
 
-## Pull Requests
+Community leaders have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
 
-If you would like to contribute code, follow these steps:
+# Scope
+This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
 
-#### 1. Fork the repository
-Create a fork of the repository on GitHub.
+# Enforcement
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for enforcement at [francisoteng1.05@gmail.com] All complaints will be reviewed and investigated promptly and fairly.
 
-**Clone your fork:**
-```bash
-git clone https://github.com/<your-username>/EasyStay.git
-cd food-delivery-multivendor
-```
+All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
-#### 2. Create a new branch
-```bash
-git checkout -b feature-or-bugfix-description
-```
+# Enforcement Guidelines
+Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
 
-#### 3. Make your changes
-Make your changes to the code.
+## 1. Correction
+Community Impact: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
 
-#### 4. Test your changes
-Ensure your changes work as expected and do not introduce any issues.
+Consequence: A private, written warning from community leaders, providing clarity around the nature of the violation and an explanation of why the behavior was inappropriate. A public apology may be requested.
 
-#### 5. Commit your changes
-```bash
-git add .
-git commit -m "Description of the feature or bugfix"
-```
+## 2. Warning
+ Community Impact: A violation through a single incident or series of actions.
 
-#### 6. Push your changes
-```bash
-git push origin feature-or-bugfix-description
-```
+ Consequence: A warning with consequences for continued behavior. No interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a specified period of time. This includes avoiding interactions in community spaces as well as external channels like social media. Violating these terms may lead to a temporary or permanent ban.
 
-#### 7. Submit a pull request
-Create a pull request from your fork to the main repository. Include a detailed description of your changes.
+# 3. Temporary Ban
+ Community Impact: A serious violation of community standards, including sustained inappropriate behavior.
 
-## Coding Guidelines
+ Consequence: A temporary ban from any sort of interaction or public communication with the community for a specified period of time. No public or private interaction with the people involved, including unsolicited interaction with those enforcing the Code of Conduct, is allowed during this period. Violating these terms may lead to a permanent ban.
 
-To ensure consistency in the codebase, please follow these guidelines:
-* **Code Style:** Follow the existing code style in the project.
-* **Comments:** Write clear and concise comments for complex code sections.
-* **Tests:** Write tests for new features and bug fixes.
+# 4. Permanent Ban
+ Community Impact: Demonstrating a pattern of violation of community standards, including sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of classes of individuals.
 
-## Code of Conduct
+Consequence: A permanent ban from any sort of public interaction within the community.
 
-By participating in this project, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md).
+# Attribution
+This Code of Conduct is adapted from the Contributor Covenant, version 2.1, available at https://www.contributor-covenant.org/version/2/1/code_of_conduct.html.
 
-## Getting Started
+Community Impact Guidelines were inspired by Mozilla’s code of conduct enforcement ladder.
 
-### Prerequisites
-
-Ensure you have the following installed:
-* Node.js (version 14.0 to 16.0)
-* npm or yarn
-
-### Setting Up
-
-#### 1. Clone the repository
-```bash
-git clone https://github.com/Francis-Oteng/EasyStay
-cd EasyStay
-```
-
-#### 2. Install dependencies
-```bash
-npm install
-# or
-yarn install
-```
-
-#### 3. Run the development server
-```bash
-npm start
-# or
-yarn start
-```
+For answers to common questions about this code of conduct, see the FAQ at https://www.contributor-covenant.org/faq. Translations are available at https://www.contributor-covenant.org/translations.
