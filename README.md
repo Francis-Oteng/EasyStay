@@ -10,5 +10,24 @@ At its core, EasyStay was built to solve a problem that's easy to overlook until
 
 Whether you're a guest planning a trip or a hotel team managing day-to-day operations, EasyStay is built to feel simple on the surface while staying rock-solid underneath.
 
+## Recommended Project Structure
 
+```text
+easystay/
+├─ apps/
+│  ├─ web/                 # React + Next.js frontend
+│  └─ api/                 # Node.js + Express backend
+├─ packages/
+│  ├─ shared-types/        # Shared DTOs and domain types
+│  ├─ eslint-config/       # Optional shared lint config
+│  └─ tsconfig/            # Optional shared TS config
+├─ infra/                  # Docker, deployment, and environment assets
+├─ .github/
+│  └─ workflows/           # CI pipelines
+├─ docs/
+│  └─ PROJECT_STRUCTURE.md # Detailed production scaffold
+└─ README.md
+```
+
+See `docs/PROJECT_STRUCTURE.md` for the full tree and placement notes for booking integrity, payments, and auth flows.
 
