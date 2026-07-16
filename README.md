@@ -10,7 +10,7 @@ At its core, EasyStay was built to solve a problem that's easy to overlook until
 
 Whether you're a guest planning a trip or a hotel team managing day-to-day operations, EasyStay is built to feel simple on the surface while staying rock-solid underneath.
 
-## Recommended Project Structure
+##  Project Structure
 
 ```text
 easystay/
