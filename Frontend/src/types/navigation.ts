@@ -3,6 +3,10 @@ export type NavLink = {
   href: string;
 };
 
+export type NavLinkWithIcon = NavLink & {
+  icon: string;
+};
+
 export type SectionSummary = {
   title: string;
   description: string;
