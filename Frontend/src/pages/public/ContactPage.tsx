@@ -3,10 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock, ChevronDown, Send, MessageSquare } from 'lucide-react';
 
 const contactInfo = [
-  { icon: MapPin, label: 'Address', value: '123 Broadway, Suite 400, New York, NY 10006' },
-  { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
+  { icon: MapPin, label: 'Address', value: '34 Independence Avenue, Ridge, Accra' },
+  { icon: Phone, label: 'Phone', value: '+233 50 485 5702' },
   { icon: Mail, label: 'Email', value: 'hello@stayeasy.com' },
-  { icon: Clock, label: 'Hours', value: 'Mon - Fri, 9:00 AM - 6:00 PM EST' },
+  { icon: Clock, label: 'Hours', value: 'Mon - Fri, 9:00 AM - 6:00 PM GMT' },
 ];
 
 const faqs = [

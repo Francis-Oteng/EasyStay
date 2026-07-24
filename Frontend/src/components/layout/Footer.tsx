@@ -100,15 +100,15 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                <a href="tel:+1234567890" className="text-sm text-white/60 hover:text-white transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+233504855702" className="text-sm text-white/60 hover:text-white transition-colors">
+                  +233 50 485 5702
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                 <span className="text-sm text-white/60">
-                  123 StayEasy Street, Suite 100<br />
-                  San Francisco, CA 94102
+                  34 Independence Avenue, Ridge<br />
+                  Accra, Ghana
                 </span>
               </li>
             </ul>

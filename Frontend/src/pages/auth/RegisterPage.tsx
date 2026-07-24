@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, Mail, Lock, User, Phone, Building2, Home, ArrowRight, ArrowLeft, Check } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
 
 const customerSchema = z.object({
   fullName: z.string().min(2, 'Name must be at least 2 characters'),
@@ -39,14 +41,29 @@ export function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { register: authRegister } = useAuth();
+  const navigate = useNavigate();
+
   const { register, handleSubmit, formState: { errors }, trigger } = useForm<RegisterForm>({
     resolver: zodResolver(role === 'customer' ? customerSchema : ownerSchema),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: RegisterForm) => {
     setIsLoading(true);
-    await new Promise(r => setTimeout(r, 1500));
-    setIsLoading(false);
+    try {
+      await authRegister({
+        email: data.email,
+        password: data.password,
+        fullName: data.fullName,
+        phoneNumber: data.phone,
+        role: role === 'customer' ? 'CUSTOMER' : 'OWNER',
+      });
+      navigate(role === 'customer' ? '/dashboard' : '/owner/dashboard');
+    } catch {
+      console.error('Registration failed');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const nextStep = async () => {
@@ -186,7 +203,7 @@ export function RegisterPage() {
                       <input
                         type="tel"
                         {...register('phone')}
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+233 50 000 0000"
                         className={`w-full pl-10 pr-4 py-3 border rounded-xl text-sm font-ui focus:outline-none focus:border-primary transition-colors ${errors.phone ? 'border-error' : 'border-gray-200'}`}
                       />
                     </div>
@@ -318,9 +335,9 @@ export function RegisterPage() {
 
           <p className="text-center mt-6 text-sm font-ui text-gray-500">
             Already have an account?{' '}
-            <a href="/login" className="text-primary font-semibold hover:text-primary-dark transition-colors">
+            <Link to="/login" className="text-primary font-semibold hover:text-primary-dark transition-colors">
               Log in
-            </a>
+            </Link>
           </p>
         </div>
       </div>

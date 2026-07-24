@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Eye, EyeOff, Mail, Lock, LogIn, Building2 } from 'lucide-react';
+import { useAuth } from '../../hooks/useAuth';
 
 const loginSchema = z.object({
   email: z.string().email('Please enter a valid email'),
@@ -17,14 +19,23 @@ export function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { login } = useAuth();
+  const navigate = useNavigate();
+
   const { register, handleSubmit, formState: { errors } } = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
-    await new Promise(r => setTimeout(r, 1500));
-    setIsLoading(false);
+    try {
+      await login(data.email, data.password);
+      navigate('/dashboard');
+    } catch {
+      console.error('Login failed');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -101,9 +112,9 @@ export function LoginPage() {
                 />
                 <span className="text-sm font-ui text-gray-600">Remember me</span>
               </label>
-              <a href="/forgot-password" className="text-sm font-ui text-primary hover:text-primary-dark transition-colors">
+              <Link to="/forgot-password" className="text-sm font-ui text-primary hover:text-primary-dark transition-colors">
                 Forgot password?
-              </a>
+              </Link>
             </div>
 
             <motion.button
@@ -128,9 +139,9 @@ export function LoginPage() {
             className="text-center mt-8 text-sm font-ui text-gray-500"
           >
             Don't have an account?{' '}
-            <a href="/register" className="text-primary font-semibold hover:text-primary-dark transition-colors">
+            <Link to="/register" className="text-primary font-semibold hover:text-primary-dark transition-colors">
               Sign up
-            </a>
+            </Link>
           </motion.p>
         </div>
       </motion.div>

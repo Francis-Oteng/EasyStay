@@ -3,6 +3,7 @@ import { Calendar, MapPin, MoreVertical } from 'lucide-react';
 import clsx from 'clsx';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
+import { formatCurrency } from '@/utils/format';
 
 type BookingStatus = 'confirmed' | 'pending' | 'cancelled' | 'completed';
 
@@ -79,7 +80,7 @@ export function BookingCard({
 
           <div className="flex items-center justify-between pt-3 mt-3 border-t border-border/50">
             <div>
-              <span className="text-lg font-bold text-text">${totalPrice}</span>
+              <span className="text-lg font-bold text-text">{formatCurrency(totalPrice)}</span>
               <span className="text-sm text-text-muted"> total</span>
             </div>
             <div className="flex items-center gap-2">

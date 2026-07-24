@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { DollarSign, TrendingUp, Building2, Wallet, Calendar, ChevronDown, MapPin } from 'lucide-react';
+import { formatCurrency } from '@/utils/format';
 
 const summaryCards = [
-  { icon: DollarSign, label: 'Total Revenue', value: '$124,580', change: '+18.2% vs last year', color: 'text-success', bg: 'bg-success/10' },
-  { icon: TrendingUp, label: 'This Month', value: '$10,200', change: '+12.5% vs last month', color: 'text-primary', bg: 'bg-primary/10' },
-  { icon: Building2, label: 'Avg per Property', value: '$15,572', change: 'per property per year', color: 'text-blue-500', bg: 'bg-blue-500/10' },
-  { icon: Wallet, label: 'Pending Payouts', value: '$4,200', change: '3 pending payouts', color: 'text-warning', bg: 'bg-warning/10' },
+  { icon: DollarSign, label: 'Total Revenue', value: formatCurrency(124580), change: '+18.2% vs last year', color: 'text-success', bg: 'bg-success/10' },
+  { icon: TrendingUp, label: 'This Month', value: formatCurrency(10200), change: '+12.5% vs last month', color: 'text-primary', bg: 'bg-primary/10' },
+  { icon: Building2, label: 'Avg per Property', value: formatCurrency(15572), change: 'per property per year', color: 'text-blue-500', bg: 'bg-blue-500/10' },
+  { icon: Wallet, label: 'Pending Payouts', value: formatCurrency(4200), change: '3 pending payouts', color: 'text-warning', bg: 'bg-warning/10' },
 ];
 
 const monthlyRevenue = [
@@ -109,7 +110,7 @@ export function RevenuePage() {
                     style={{ height: `${(m.revenue / maxMonthlyRev) * 100}%` }}
                   >
                     <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-secondary text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                      ${m.revenue.toLocaleString()}
+                      {formatCurrency(m.revenue)}
                     </div>
                   </div>
                   <span className="text-[10px] text-gray-400 font-ui">{m.month}</span>
@@ -160,7 +161,7 @@ export function RevenuePage() {
                   <p className="text-xs text-gray-500 flex items-center gap-1"><MapPin className="w-3 h-3" /> {prop.location}</p>
                 </div>
                 <div className="text-right">
-                  <p className="font-ui font-bold text-primary text-sm">${prop.revenue.toLocaleString()}</p>
+                  <p className="font-ui font-bold text-primary text-sm">{formatCurrency(prop.revenue)}</p>
                   <p className="text-xs text-gray-400">{prop.bookings} bookings</p>
                 </div>
               </div>

@@ -6,14 +6,21 @@ import {
   ChevronRight, Mail, Building2, Wifi, Dumbbell, Car,
   Waves, Snowflake, Coffee
 } from 'lucide-react';
+import { formatCurrency } from '@/utils/format';
+import executiveSelfCont from '@/assets/images/Executive self contained -Eastlegon accra.jpg';
+import beachResortVilla from '@/assets/images/Beach Resort Villa western Region.jpg';
+import mountainViewLodge from '@/assets/images/Mountain view resort western region.jpg';
+import compoundHouse from '@/assets/images/compound house at asafo.jpg';
+import lakesideCottages from '@/assets/images/lakeside cottages eastern region.jpg';
+import premiumKingSuite from '@/assets/images/Premiunm King suite picture.jpg';
 
 const featuredProperties = [
-  { id: 1, name: 'Skyline Penthouse', location: 'New York, USA', price: 420, rating: 4.9, reviews: 128, image: 'from-purple-500 to-pink-500', amenities: ['WiFi', 'Pool', 'Gym'] },
-  { id: 2, name: 'Seaside Villa', location: 'Malibu, USA', price: 580, rating: 4.8, reviews: 96, image: 'from-blue-500 to-cyan-500', amenities: ['WiFi', 'Pool', 'Parking'] },
-  { id: 3, name: 'Mountain Lodge', location: 'Aspen, USA', price: 350, rating: 4.7, reviews: 74, image: 'from-emerald-500 to-teal-500', amenities: ['WiFi', 'Fireplace', 'Ski-in'] },
-  { id: 4, name: 'Urban Loft', location: 'London, UK', price: 280, rating: 4.6, reviews: 152, image: 'from-orange-500 to-red-500', amenities: ['WiFi', 'AC', 'Workspace'] },
-  { id: 5, name: 'Beachfront Bungalow', location: 'Bali, Indonesia', price: 190, rating: 4.9, reviews: 203, image: 'from-yellow-500 to-orange-500', amenities: ['WiFi', 'Pool', 'Breakfast'] },
-  { id: 6, name: 'Historic Townhouse', location: 'Paris, France', price: 310, rating: 4.7, reviews: 88, image: 'from-violet-500 to-purple-500', amenities: ['WiFi', 'AC', 'Elevator'] },
+  { id: 1, name: 'Executive Self-Cont', location: 'East Legon, Accra', price: 420, rating: 4.9, reviews: 128, image: executiveSelfCont, amenities: ['WiFi', 'Pool', 'Gym'] },
+  { id: 2, name: 'Beach Resort Villa', location: 'Busua, Western Region', price: 580, rating: 4.8, reviews: 96, image: beachResortVilla, amenities: ['WiFi', 'Pool', 'Parking'] },
+  { id: 3, name: 'Mountain View Lodge', location: 'Axim, Western Region', price: 350, rating: 4.7, reviews: 74, image: mountainViewLodge, amenities: ['WiFi', 'Restaurant', 'Hiking'] },
+  { id: 4, name: 'Compound House', location: 'Asafo, Kumasi', price: 280, rating: 4.6, reviews: 152, image: compoundHouse, amenities: ['WiFi', 'AC', 'Parking'] },
+  { id: 5, name: 'Lakeside Cottages', location: 'Akosombo, Eastern Region', price: 190, rating: 4.9, reviews: 203, image: lakesideCottages, amenities: ['WiFi', 'Pool', 'Breakfast'] },
+  { id: 6, name: 'Serviced Apartment', location: 'Labone, Accra', price: 310, rating: 4.7, reviews: 88, image: premiumKingSuite, amenities: ['WiFi', 'AC', 'Elevator'] },
 ];
 
 const whyChooseItems = [
@@ -27,7 +34,7 @@ const whyChooseItems = [
 
 const testimonials = [
   { name: 'Sarah Johnson', location: 'New York, USA', rating: 5, text: 'Absolutely incredible experience! The villa exceeded all expectations. The views were breathtaking and the host was incredibly attentive.', initials: 'SJ' },
-  { name: 'Michael Chen', location: 'San Francisco, USA', rating: 5, text: 'StayEasy made finding the perfect vacation rental effortless. The booking process was smooth and the property was exactly as described.', initials: 'MC' },
+  { name: 'Michael Chen', location: 'Accra, Ghana', rating: 5, text: 'StayEasy made finding the perfect vacation rental effortless. The booking process was smooth and the property was exactly as described.', initials: 'MC' },
   { name: 'Emma Williams', location: 'London, UK', rating: 4, text: 'Great platform with amazing property options. Customer service was quick to respond and helped us with a special request.', initials: 'EW' },
 ];
 
@@ -43,8 +50,6 @@ const itemVariants = {
 
 export function HomePage() {
   const [destination, setDestination] = useState('');
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('2');
 
   return (
@@ -89,8 +94,8 @@ export function HomePage() {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="bg-white/10 backdrop-blur-xl rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto border border-white/10"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              <div className="lg:col-span-1 relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="relative">
                 <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-light w-5 h-5" />
                 <input
                   type="text"
@@ -98,24 +103,6 @@ export function HomePage() {
                   value={destination}
                   onChange={(e) => setDestination(e.target.value)}
                   className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 font-ui focus:outline-none focus:border-primary-light transition-colors"
-                />
-              </div>
-              <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-light w-5 h-5" />
-                <input
-                  type="date"
-                  value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 font-ui focus:outline-none focus:border-primary-light transition-colors [color-scheme:dark]"
-                />
-              </div>
-              <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-light w-5 h-5" />
-                <input
-                  type="date"
-                  value={checkOut}
-                  onChange={(e) => setCheckOut(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 font-ui focus:outline-none focus:border-primary-light transition-colors [color-scheme:dark]"
                 />
               </div>
               <div className="relative">
@@ -176,7 +163,8 @@ export function HomePage() {
               href={`/properties/${property.id}`}
               className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300"
             >
-              <div className={`h-56 bg-gradient-to-br ${property.image} relative overflow-hidden`}>
+              <div className="h-56 relative overflow-hidden">
+                <img src={property.image} alt={property.name} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1">
                   <div className="flex items-center gap-1">
@@ -194,7 +182,7 @@ export function HomePage() {
                       <MapPin className="w-3.5 h-3.5" /> {property.location}
                     </p>
                   </div>
-                  <p className="font-ui font-bold text-lg text-primary">${property.price}<span className="text-sm text-gray-500 font-normal">/night</span></p>
+                  <p className="font-ui font-bold text-lg text-primary">{formatCurrency(property.price)}<span className="text-sm text-gray-500 font-normal">/night</span></p>
                 </div>
                 <div className="flex gap-2 mt-4 flex-wrap">
                   {property.amenities.map((amenity) => (

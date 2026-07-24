@@ -43,7 +43,7 @@ export function MyPropertiesPage() {
               <p className="text-gray-500 font-ui text-sm mt-1">{properties.length} properties</p>
             </div>
             <a
-              href="/owner/properties/add"
+              href="/owner/add-property"
               className="bg-primary hover:bg-primary-dark text-white font-ui font-semibold px-5 py-3 rounded-xl flex items-center gap-2 transition-colors"
             >
               <Plus className="w-5 h-5" /> Add Property
@@ -68,7 +68,7 @@ export function MyPropertiesPage() {
             <Home className="w-16 h-16 text-gray-300 mx-auto mb-4" />
             <h3 className="font-ui font-semibold text-xl text-secondary mb-2">No properties found</h3>
             <p className="text-gray-500 font-sans mb-6">Start by adding your first property</p>
-            <a href="/owner/properties/add" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-ui font-semibold px-6 py-3 rounded-xl transition-colors">
+            <a href="/owner/add-property" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-ui font-semibold px-6 py-3 rounded-xl transition-colors">
               <Plus className="w-5 h-5" /> Add Property
             </a>
           </div>
@@ -113,7 +113,7 @@ export function MyPropertiesPage() {
                         {property.published ? 'Published' : 'Unpublished'}
                       </button>
                       <div className="flex items-center gap-3">
-                        <a href={`/owner/properties/edit/${property.id}`} className="text-sm font-ui text-primary hover:text-primary-dark flex items-center gap-1 transition-colors">
+                        <a href={`/owner/edit-property/${property.id}`} className="text-sm font-ui text-primary hover:text-primary-dark flex items-center gap-1 transition-colors">
                           <Edit3 className="w-4 h-4" /> Edit
                         </a>
                         {deleteConfirm === property.id ? (

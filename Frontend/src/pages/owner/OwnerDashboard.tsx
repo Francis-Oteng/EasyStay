@@ -148,7 +148,7 @@ export function OwnerDashboard() {
             <div className="bg-white rounded-2xl p-5 border border-gray-100">
               <h2 className="font-ui font-semibold text-lg text-secondary mb-4">Quick Actions</h2>
               <div className="space-y-3">
-                <a href="/owner/properties/add" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
+                <a href="/owner/add-property" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
                   <Plus className="w-5 h-5 text-primary" />
                   <div className="flex-1">
                     <p className="text-sm font-ui font-semibold text-secondary group-hover:text-primary transition-colors">Add Property</p>

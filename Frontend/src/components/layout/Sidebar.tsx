@@ -38,18 +38,18 @@ interface SidebarLink {
 }
 
 const customerLinks: SidebarLink[] = [
+  { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
   { label: 'Browse Properties', href: '/properties', icon: Search },
-  { label: 'My Bookings', href: '/dashboard/bookings', icon: BookOpen },
-  { label: 'Wishlist', href: '/dashboard/wishlist', icon: Heart },
-  { label: 'Notifications', href: '/dashboard/notifications', icon: Bell },
-  { label: 'Profile', href: '/dashboard/profile', icon: User },
-  { label: 'Settings', href: '/dashboard/settings', icon: Settings },
+  { label: 'My Bookings', href: '/bookings', icon: BookOpen },
+  { label: 'Wishlist', href: '/wishlist', icon: Heart },
+  { label: 'Notifications', href: '/notifications', icon: Bell },
+  { label: 'Profile', href: '/profile', icon: User },
 ];
 
 const ownerLinks: SidebarLink[] = [
-  { label: 'Dashboard', href: '/owner', icon: LayoutDashboard },
+  { label: 'Dashboard', href: '/owner/dashboard', icon: LayoutDashboard },
   { label: 'My Properties', href: '/owner/properties', icon: Building2 },
-  { label: 'Add Property', href: '/owner/properties/add', icon: PlusCircle },
+  { label: 'Add Property', href: '/owner/add-property', icon: PlusCircle },
   { label: 'Bookings', href: '/owner/bookings', icon: BookOpen },
   { label: 'Calendar', href: '/owner/calendar', icon: Calendar },
   { label: 'Revenue', href: '/owner/revenue', icon: TrendingUp },
@@ -93,7 +93,7 @@ export function Sidebar({
             to={link.href}
             className={clsx(
               'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors',
-              activePath === link.href
+              activePath === link.href || (link.href !== '/' && activePath.startsWith(link.href))
                 ? 'text-primary bg-accent'
                 : 'text-text-muted hover:text-text hover:bg-accent/50',
               collapsed && 'justify-center px-2',

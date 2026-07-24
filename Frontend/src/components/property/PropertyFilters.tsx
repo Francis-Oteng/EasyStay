@@ -3,6 +3,7 @@ import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
+import { formatCurrency } from '@/utils/format';
 
 export interface PropertyFiltersProps {
   onFilterChange: (filters: FilterValues) => void;
@@ -95,8 +96,8 @@ export function PropertyFilters({ onFilterChange }: PropertyFiltersProps) {
           />
         </div>
         <div className="flex justify-between text-xs text-text-muted mt-1">
-          <span>${filters.minPrice}</span>
-          <span>${filters.maxPrice}</span>
+          <span>{formatCurrency(filters.minPrice)}</span>
+          <span>{formatCurrency(filters.maxPrice)}</span>
         </div>
       </div>
 

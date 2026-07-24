@@ -12,6 +12,7 @@ import {
 import clsx from 'clsx';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
+import { formatCurrency } from '@/utils/format';
 
 export interface PropertyCardProps {
   id: string;
@@ -161,7 +162,7 @@ export function PropertyCard({
 
         <div className="flex items-center justify-between pt-3 border-t border-border/50">
           <div>
-            <span className="text-lg font-bold text-text">${pricePerNight}</span>
+            <span className="text-lg font-bold text-text">{formatCurrency(pricePerNight)}</span>
             <span className="text-sm text-text-muted"> / night</span>
           </div>
           <Button size="sm" onClick={() => onBook?.(id)}>

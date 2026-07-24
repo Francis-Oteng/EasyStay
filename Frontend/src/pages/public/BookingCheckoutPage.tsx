@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CreditCard, User, Calendar, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { formatCurrency } from '@/utils/format';
 
 const steps = ['Review stay', 'Enter details', 'Pay and confirm'];
 
@@ -111,7 +112,7 @@ export function BookingCheckoutPage() {
               <div className="mt-6 border-t border-border pt-4">
                 <div className="flex items-center justify-between">
                   <span className="text-text-muted">Total</span>
-                  <span className="text-2xl font-bold text-secondary">$660</span>
+                  <span className="text-2xl font-bold text-secondary">{formatCurrency(660)}</span>
                 </div>
               </div>
               <Button variant="primary" size="lg" className="mt-6 w-full">

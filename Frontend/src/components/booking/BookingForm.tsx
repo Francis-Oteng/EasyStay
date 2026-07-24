@@ -6,6 +6,7 @@ import { Calendar, Users } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 import { Select } from '../ui/Select';
+import { formatCurrency } from '@/utils/format';
 
 const bookingSchema = z.object({
   checkIn: z.string().min(1, 'Check-in date is required'),
@@ -94,21 +95,21 @@ export function BookingForm({
 
       <div className="bg-accent rounded-xl p-4 space-y-2">
         <div className="flex justify-between text-sm text-text-muted">
-          <span>${pricePerNight} x {nights} night{nights !== 1 ? 's' : ''}</span>
-          <span>${totalPrice}</span>
+          <span>{formatCurrency(pricePerNight)} x {nights} night{nights !== 1 ? 's' : ''}</span>
+          <span>{formatCurrency(totalPrice)}</span>
         </div>
         <div className="flex justify-between text-sm text-text-muted">
           <span>Service fee</span>
-          <span>${Math.round(totalPrice * 0.1)}</span>
+          <span>{formatCurrency(Math.round(totalPrice * 0.1))}</span>
         </div>
         <div className="flex justify-between text-sm text-text-muted">
           <span>Cleaning fee</span>
-          <span>$50</span>
+          <span>{formatCurrency(50)}</span>
         </div>
         <hr className="border-border" />
         <div className="flex justify-between font-semibold text-text">
           <span>Total</span>
-          <span>${totalPrice + Math.round(totalPrice * 0.1) + 50}</span>
+          <span>{formatCurrency(totalPrice + Math.round(totalPrice * 0.1) + 50)}</span>
         </div>
       </div>
 

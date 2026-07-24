@@ -5,7 +5,7 @@ import { User, Mail, Phone, Lock, Save, CheckCircle } from 'lucide-react';
 const mockUser = {
   name: 'Sarah Johnson',
   email: 'sarah.johnson@example.com',
-  phone: '+1 (555) 987-6543',
+  phone: '+233 50 485 5704',
 };
 
 export function ProfilePage() {

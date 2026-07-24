@@ -79,7 +79,7 @@ export function CustomerDashboard() {
             >
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-ui font-semibold text-xl text-secondary">Upcoming Bookings</h2>
-                <a href="/customer/bookings" className="text-sm text-primary font-ui hover:text-primary-dark transition-colors flex items-center gap-1">
+                <a href="/bookings" className="text-sm text-primary font-ui hover:text-primary-dark transition-colors flex items-center gap-1">
                   View All <ArrowRight className="w-4 h-4" />
                 </a>
               </div>
@@ -156,7 +156,7 @@ export function CustomerDashboard() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-gray-400" />
                 </a>
-                <a href="/customer/bookings" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
+                <a href="/bookings" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
                   <CalendarCheck className="w-5 h-5 text-primary" />
                   <div className="flex-1">
                     <p className="text-sm font-ui font-semibold text-secondary group-hover:text-primary transition-colors">View Bookings</p>
@@ -164,7 +164,7 @@ export function CustomerDashboard() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-gray-400" />
                 </a>
-                <a href="/customer/profile" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
+                <a href="/profile" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
                   <User className="w-5 h-5 text-primary" />
                   <div className="flex-1">
                     <p className="text-sm font-ui font-semibold text-secondary group-hover:text-primary transition-colors">Edit Profile</p>
@@ -172,7 +172,7 @@ export function CustomerDashboard() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-gray-400" />
                 </a>
-                <a href="/customer/wishlist" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
+                <a href="/wishlist" className="flex items-center gap-3 p-3 bg-accent rounded-xl hover:bg-accent-dark transition-colors group">
                   <Heart className="w-5 h-5 text-error" />
                   <div className="flex-1">
                     <p className="text-sm font-ui font-semibold text-secondary group-hover:text-primary transition-colors">Wishlist</p>

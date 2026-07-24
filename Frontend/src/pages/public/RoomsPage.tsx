@@ -1,52 +1,58 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Search, SlidersHorizontal, Calendar, MapPin } from 'lucide-react';
 import { PropertyCard } from '@/components/property/PropertyCard';
+import { formatCurrency } from '@/utils/format';
+import premiumKingSuite from '@/assets/images/Premiunm King suite picture.jpg';
+import doubleComfort from '@/assets/images/double comfort room.jpg';
+import familyConnecting from '@/assets/images/Family connecting room.jpg';
 
 const rooms = [
   {
     id: '1',
     name: 'Premium King Suite',
-    location: 'Miami Beach, FL',
+    location: 'Airport Residential, Accra',
     pricePerNight: 220,
     rating: 4.8,
     bedrooms: 1,
     bathrooms: 1,
     maxGuests: 2,
     amenities: ['WiFi', 'Pool', 'Ocean view'],
-    images: [],
+    images: [premiumKingSuite],
     isPublished: true,
   },
   {
     id: '2',
     name: 'Comfort Double Room',
-    location: 'Downtown, NYC',
+    location: 'Ridge, Accra',
     pricePerNight: 145,
     rating: 4.5,
     bedrooms: 1,
     bathrooms: 1,
     maxGuests: 2,
     amenities: ['WiFi', 'City view', 'Breakfast'],
-    images: [],
+    images: [doubleComfort],
     isPublished: true,
   },
   {
     id: '3',
     name: 'Family Connecting Room',
-    location: 'Orlando, FL',
+    location: 'Ahodwo, Kumasi',
     pricePerNight: 310,
     rating: 4.7,
     bedrooms: 2,
     bathrooms: 1,
     maxGuests: 4,
     amenities: ['WiFi', 'Pool', 'Lounge access'],
-    images: [],
+    images: [familyConnecting],
     isPublished: true,
   },
 ];
 
 export function RoomsPage() {
   const [search, setSearch] = useState('');
+  const navigate = useNavigate();
 
   const filtered = rooms.filter((r) =>
     r.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -55,27 +61,65 @@ export function RoomsPage() {
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="min-h-screen">
-      <div className="bg-gradient-to-br from-accent to-white pb-12 pt-8">
-        <div className="mx-auto max-w-7xl px-4">
-          <p className="text-sm font-semibold uppercase tracking-wider text-primary">Explore</p>
-          <h1 className="mt-1 font-heading text-4xl font-bold text-secondary">
+      <div className="relative min-h-[40vh] flex items-center bg-gradient-to-br from-secondary via-[#1A1530] to-primary overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-30"
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-secondary/80 via-secondary/60 to-primary/80" />
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-sm font-semibold uppercase tracking-wider text-primary-light"
+          >
+            Explore
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-1 font-heading text-4xl font-bold text-white"
+          >
             Find your perfect stay
-          </h1>
-          <p className="mt-2 max-w-2xl text-text-muted">
-            Search rooms by date, guest count, price, and stay style.
-          </p>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="mt-2 max-w-2xl text-gray-300 mx-auto"
+          >
+            Search by destination, price, and stay style.
+          </motion.p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="mt-8 bg-white/10 backdrop-blur-xl rounded-2xl p-4 border border-white/10 max-w-xl mx-auto"
+          >
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-light w-4 h-4" />
+              <input
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="Where to?"
+                className="w-full pl-10 pr-3 py-2.5 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 text-sm font-ui focus:outline-none focus:border-primary-light transition-colors"
+              />
+            </div>
+          </motion.div>
+
+          <div className="mt-6 flex flex-wrap gap-3 justify-center">
+            <span className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10">
               Tonight
             </span>
-            <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+            <span className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10">
               2 adults
             </span>
-            <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
-              Under $250
+            <span className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10">
+              Under {formatCurrency(250)}
             </span>
-            <span className="rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+            <span className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10">
               Breakfast
             </span>
           </div>
@@ -111,8 +155,8 @@ export function RoomsPage() {
                     <div className="h-2 w-3/4 rounded-full bg-primary" />
                   </div>
                   <div className="mt-1 flex justify-between text-xs text-text-muted">
-                    <span>$0</span>
-                    <span>$500+</span>
+                    <span>{formatCurrency(0)}</span>
+                    <span>{formatCurrency(500)}+</span>
                   </div>
                 </div>
 
@@ -169,6 +213,7 @@ export function RoomsPage() {
                   bedrooms={room.bedrooms}
                   bathrooms={room.bathrooms}
                   amenities={room.amenities}
+                  onBook={(id) => navigate(`/properties/${id}`)}
                 />
               ))}
             </div>

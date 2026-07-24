@@ -1,0 +1,224 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  OWNER
+  ADMIN
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  DEBIT_CARD
+  PAYPAL
+  STRIPE
+  BANK_TRANSFER
+  CASH
+}
+
+enum JobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+model User {
+  id          String   @id @default(cuid())
+  fullName    String
+  email       String   @unique
+  phoneNumber String
+  password    String
+  role        Role     @default(CUSTOMER)
+  avatar      String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  properties     Property[]
+  bookings       Booking[]
+  reviews        Review[]
+  notifications  Notification[]
+  wishlists      Wishlist[]
+
+  @@map("users")
+}
+
+model Property {
+  id            String   @id @default(cuid())
+  name          String
+  description   String
+  category      String
+  address       String
+  city          String
+  country       String
+  pricePerNight Float
+  bedrooms      Int
+  bathrooms     Int
+  maxGuests     Int
+  amenities     String[]
+  isPublished   Boolean  @default(false)
+  isFeatured    Boolean  @default(false)
+  viewCount     Int      @default(0)
+  latitude      Float?
+  longitude     Float?
+  ownerId       String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  owner      User             @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  images     PropertyImage[]
+  bookings   Booking[]
+  reviews    Review[]
+  wishlists  Wishlist[]
+  availabilities Availability[]
+
+  @@map("properties")
+}
+
+model PropertyImage {
+  id         String  @id @default(cuid())
+  url        String
+  publicId   String
+  isPrimary  Boolean @default(false)
+  propertyId String
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@map("property_images")
+}
+
+model Booking {
+  id          String        @id @default(cuid())
+  checkIn     DateTime
+  checkOut    DateTime
+  guests      Int
+  totalPrice  Float
+  status      BookingStatus @default(PENDING)
+  customerId  String
+  propertyId  String
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  customer User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  payments Payment[]
+
+  @@map("bookings")
+}
+
+model Payment {
+  id            String         @id @default(cuid())
+  amount        Float
+  method        PaymentMethod
+  status        PaymentStatus  @default(PENDING)
+  transactionId String?
+  currency      String         @default("USD")
+  description   String?
+  paidAt        DateTime?
+  refundedAt    DateTime?
+  bookingId     String
+  createdAt     DateTime       @default(now())
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@map("payments")
+}
+
+model Availability {
+  id         String   @id @default(cuid())
+  date       DateTime
+  isAvailable Boolean @default(true)
+  propertyId String
+
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, date])
+  @@map("availabilities")
+}
+
+model Wishlist {
+  id         String   @id @default(cuid())
+  customerId String
+  propertyId String
+  createdAt  DateTime @default(now())
+
+  customer User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([customerId, propertyId])
+  @@map("wishlists")
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  rating     Int
+  comment    String
+  customerId String
+  propertyId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  customer User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  property Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
+}
+
+model Notification {
+  id      String   @id @default(cuid())
+  message  String
+  type     String
+  isRead   Boolean  @default(false)
+  userId   String
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+model WebhookEvent {
+  id        String   @id @default(cuid())
+  event     String
+  source    String
+  payload   Json
+  status    String   @default("RECEIVED")
+  processedAt DateTime?
+  error     String?
+  createdAt DateTime @default(now())
+
+  @@map("webhook_events")
+}
+
+model JobLog {
+  id        String    @id @default(cuid())
+  job       String
+  status    JobStatus @default(PENDING)
+  message   String?
+  startedAt DateTime?
+  completedAt DateTime?
+  createdAt DateTime  @default(now())
+
+  @@map("job_logs")
+}

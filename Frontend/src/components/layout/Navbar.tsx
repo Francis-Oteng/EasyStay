@@ -16,6 +16,7 @@ export interface NavbarProps {
   isLoggedIn?: boolean;
   userName?: string;
   userAvatar?: string;
+  userRole?: string;
   onLogin?: () => void;
   onSignup?: () => void;
   onLogout?: () => void;
@@ -25,6 +26,7 @@ export function Navbar({
   isLoggedIn = false,
   userName = 'User',
   userAvatar,
+  userRole,
   onLogin,
   onSignup,
   onLogout,
@@ -87,7 +89,7 @@ export function Navbar({
                       className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-border py-1"
                     >
                       <Link
-                        to="/dashboard"
+                        to={userRole === 'OWNER' ? '/owner/dashboard' : '/dashboard'}
                         className="flex items-center gap-2 px-4 py-2.5 text-sm text-text hover:bg-accent transition-colors"
                         onClick={() => setUserMenuOpen(false)}
                       >
@@ -193,7 +195,7 @@ export function Navbar({
                 {isLoggedIn ? (
                   <>
                     <Link
-                      to="/dashboard"
+                      to={userRole === 'OWNER' ? '/owner/dashboard' : '/dashboard'}
                       onClick={() => setMobileOpen(false)}
                       className="px-4 py-3 rounded-xl text-sm font-medium text-text hover:bg-accent transition-colors"
                     >
